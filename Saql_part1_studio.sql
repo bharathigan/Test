@@ -53,10 +53,6 @@ from booksdb.dbo.books
 where upper(LEFT(authors, CHARINDEX(' ', authors + ' ') - 1)) between  upper('rock') and upper('roll')
 
 
-select top 1 original_title, len(original_title), book_id
-from booksdb.dbo.books
-order by len(original_title) desc
-
 /* Part 2: Find the Answers to Your Own Questions*/
 
 
