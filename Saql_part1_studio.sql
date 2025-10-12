@@ -1,40 +1,51 @@
 /*## Part 1: BooksDB Questions
 
-Question 1: Write a query of the `books` table that returns the top 100 results and includes `book_id`, `authors`, `title`, and `average_rating`. Use an alias for at least one column and sort the result set in descending order of rating. What is the number one book?
-*/
-select top 100  book_id, authors, title, average_rating as "AvgRating"
-from booksdb.dbo.books
-order by average_rating desc*
+Question 1: Write a query of the `books` table that returns the top 100 results and includes `book_id`, 
+`authors`, `title`, and `average_rating`. Use an alias for at least one column 
+and sort the result set in descending order of rating. What is the number one book?*/
+
+select Top 100 book_id,
+authors,
+title,
+average_rating "Avg Rating"
+FROM booksdb.dbo.books 
+ORDER BY average_rating DEsc
 
 
 /*Question 2: Write a query to find the least popular book.*/
 
-select top 1 book_id , books_count
-from booksdb.dbo.books
-order by books_count
+ SELECT TOP 1 original_title
+ FROM booksdb.dbo.books
+ ORDER BY average_rating
+
 
 /*Question 3: Which tag is the most popular?*/
 
-select top 1 tag_id, "count"
-from booksdb.dbo.book_tags
-order by "count" desc
+SELECT TOP 1 tag_id,"count"
+FROM Booksdb.dbo.book_tags
+ORDER BY "COUNT" DESC
 
 /*Question 4: What is the name of the most popular tag?*/
 
-select tag_name
-from   booksdb.dbo.tags
-  where tag_id=30574
+SELECT tag_name
+FROM Booksdb.dbo.tags
+WHERE tag_id= 30574
+
 
 /*Question 5: How many books where released in the first decade of 2000?*/
-select count(id)
+
+ SELECT count(book_id)
 from booksdb.dbo.books
-where original_publication_year=2000
+WHERE original_publication_year >=2000 
+
+
 
 /*Question 6: How many book titles contain the word, "happy"?*/
 
-select count(*)
+SELECT  COUNT(original_title)
 from booksdb.dbo.books
-where title like '%happy%'
+WHERE original_title LIke '%happy%'
+
 
 
 /*Question 7: List the books from the top 3 authors from Question 1.  If there is more than one author just use the first one. 
@@ -52,6 +63,10 @@ select  count(distinct authors)
 from booksdb.dbo.books
 where upper(LEFT(authors, CHARINDEX(' ', authors + ' ') - 1)) between  upper('rock') and upper('roll')
 
+
+select top 1 original_title, len(original_title), book_id
+from booksdb.dbo.books
+order by len(original_title) desc
 
 /* Part 2: Find the Answers to Your Own Questions*/
 
