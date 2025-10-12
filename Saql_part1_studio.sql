@@ -1,39 +1,51 @@
 /*## Part 1: BooksDB Questions
 
-Question 1: Write a query of the `books` table that returns the top 100 results and includes `book_id`, `authors`, `title`, and `average_rating`. Use an alias for at least one column and sort the result set in descending order of rating. What is the number one book?
-select top 100  book_id, authors, title, average_rating as "AvgRating"
-from booksdb.dbo.books
-order by average_rating desc*/
+Question 1: Write a query of the `books` table that returns the top 100 results and includes `book_id`, 
+`authors`, `title`, and `average_rating`. Use an alias for at least one column 
+and sort the result set in descending order of rating. What is the number one book?*/
+
+select Top 100 book_id,
+authors,
+title,
+average_rating "Avg Rating"
+FROM booksdb.dbo.books 
+ORDER BY average_rating DEsc
 
 
 /*Question 2: Write a query to find the least popular book.*/
 
-select top 1 book_id , books_count
-from booksdb.dbo.books
-order by books_count
+ SELECT TOP 1 original_title
+ FROM booksdb.dbo.books
+ ORDER BY average_rating
+
 
 /*Question 3: Which tag is the most popular?*/
 
-select top 1 tag_id, "count"
-from booksdb.dbo.book_tags
-order by "count" desc
+SELECT TOP 1 tag_id,"count"
+FROM Booksdb.dbo.book_tags
+ORDER BY "COUNT" DESC
 
 /*Question 4: What is the name of the most popular tag?*/
 
-select tag_name
-from   booksdb.dbo.tags
-  where tag_id=30574
+SELECT tag_name
+FROM Booksdb.dbo.tags
+WHERE tag_id= 30574
+
 
 /*Question 5: How many books where released in the first decade of 2000?*/
-select count(id)
+
+ SELECT count(book_id)
 from booksdb.dbo.books
-where original_publication_year=2000
+WHERE original_publication_year >=2000 
+
+
 
 /*Question 6: How many book titles contain the word, "happy"?*/
 
-select count(*)
+SELECT  COUNT(original_title)
 from booksdb.dbo.books
-where title like '%happy%'
+WHERE original_title LIke '%happy%'
+
 
 
 /*Question 7: List the books from the top 3 authors from Question 1.  If there is more than one author just use the first one. 
@@ -41,12 +53,44 @@ Sort the title alphabetically by `author` and then by `average_rating`, best rat
 
 select original_title,authors, average_rating
 from booksdb.dbo.books
-where authors in('Bill Watterson','Brandon Sanderson','J.K. Rowling, Mary GrandPré_')
+where authors in('Bill Watterson','Brandon Sanderson','J.K. Rowling, Mary GrandPré')
 order by authors, average_rating desc
 
 /*Question 8: Write a query that returns the number of authors whose first name is between rock and roll.*/
 
 
-select  count(authors)
+select  count(distinct authors)
 from booksdb.dbo.books
-where upper(LEFT(authors, CHARINDEX(' ', authors + ' ') - 1)) between  upper('rock'') and upper('roll')
+where upper(LEFT(authors, CHARINDEX(' ', authors + ' ') - 1)) between  upper('rock') and upper('roll')
+
+
+select top 1 original_title, len(original_title), book_id
+from booksdb.dbo.books
+order by len(original_title) desc
+
+/* Part 2: Find the Answers to Your Own Questions*/
+
+
+/*1. What book has the longest title?*/
+The Art Spirit: Notes, Articles, Fragments of Letters and Talks to Students, Bearing on the Concept and Technique of Picture Making, the Study of Art Generally, and on Appreciation (Icon Editions)
+
+select top 1 original_title, len(original_title), book_id
+from booksdb.dbo.books
+order by len(original_title) desc
+
+
+2. Which author has written the most books?
+
+select top 1 authors, count(original_title)
+from booksdb.dbo.books
+group by authors
+order by count(original_title) desc
+
+
+
+3. What were the top ten books published the year I was born?
+
+select  Top 10 original_title
+From booksdb.dbo.books
+WHERE original_publication_year=1992
+
