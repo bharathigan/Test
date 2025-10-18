@@ -39,10 +39,19 @@ where t.tag_name like'%general-sports%'
 
 Choose another month and plan at least 2 events / promotions and answer the following questions:
 1. Which month did you choose?
-   August
+   May
 1. What 2 events / promotions are you highlighting?
-   Food festival
+   Food festival,Flowers sale
     
+	 	   
+# Part 3: Summarize your Work
+
+### Summarize Event 1
+
+For each event write at least one query that joins any two tables in `BooksDB` to support your choice and record you thoughts as to why you 
+used the paticlular query. At least one of your queries needs to include a HAVING clause.		   
+
+
 	select  bt.tag_id,b.authors,b.title, b.average_rating
 	from BooksDB.dbo.tags as t
 	INNER JOIN  BooksDB.dbo.book_tags AS bt ON bt.tag_id = t.tag_id
@@ -55,11 +64,8 @@ Choose another month and plan at least 2 events / promotions and answer the foll
 	 having average_rating >3.75
 	   order by b.average_rating desc;	
 
-2. Which month did you choose?
-   May
-2. What 2 events / promotions are you highlighting?
-   Flowers sale
-
+### Summarize Event 1	  
+  
 		select  bt.tag_id,b.authors,b.title, b.average_rating
 		from BooksDB.dbo.tags as t
 		INNER JOIN  BooksDB.dbo.book_tags AS bt ON bt.tag_id = t.tag_id
@@ -68,12 +74,3 @@ Choose another month and plan at least 2 events / promotions and answer the foll
 		 group by   bt.tag_id,b.authors,b.title, b.average_rating
 		 having average_rating >3.75
 		   order by b.average_rating desc;
-
-
-
-
-
-
-# Part 3: Summarize your Work
-
-For each event write at least one query that joins any two tables in BooksDB to support your choice and record you thoughts as to why you used the paticlular query. At least one of your queries needs to include a HAVING clause.
