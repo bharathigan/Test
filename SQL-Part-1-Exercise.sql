@@ -120,7 +120,7 @@ select *
 from Booksdb.dbo.tags
 where tag_name like '%mystery%'
 
-
+Answer: Displays all columns from tags table where tag-name contains mystery
 
 /*Question 2: Run the query below. In your own words, what is it returning?*/
 
@@ -144,7 +144,8 @@ SELECT user_id, count(book_id) "Total Books To Read"
    FROM BooksDB.dbo.to_read
 GROUP BY user_id
    order by user_id
-    
+
+Answer: displays count of books by user_id    
 
 
 /*Question 2: Create a query that uses `user_id` to count the total number of books each user wants to read. 
@@ -157,3 +158,4 @@ SELECT user_id, count(book_id) "Total Books To Read"
 GROUP BY user_id
    order by "Total Books To Read" desc 
     
+Answer: displays total no of books by user_id and reocrds sorted by Total Books To Read
