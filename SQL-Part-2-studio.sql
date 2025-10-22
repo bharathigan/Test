@@ -8,7 +8,7 @@
  SELECT len(title)
 FROM booksdb.dbo.books
 order by len(title) desc
-
+Answer: 186
 
 SELECT title 
 from booksdb.dbo.books
