@@ -79,7 +79,7 @@ select tag_id, count(goodreads_book_id) as "Goodreads book count"
 FROM  Booksdb.dbo.book_tags	
 group by tag_id
 
-
+Answer: Goodreads book count
 
 /*C The Ratings Table*/
 
@@ -89,8 +89,8 @@ group by tag_id
 select top 1000 *
 from Booksdb.dbo.ratings
 order by rating desc
-
-
+ 
+Answer: Displays top 1000 rows by rating descending order 
 
 /*Question 2: Create a query that returns the total number of users that have given a rating of less than 2.*/
 
