@@ -14,7 +14,7 @@ GROUP BY t.tag_id, t.tag_name,b.average_rating
 HAVING b.average_rating >3.5    
 ORDER BY   b.average_rating desc
 
-
+Answer: Displays tags related to woman or female 
 
 
 ### Event 2: Choose another event from March/Spring
