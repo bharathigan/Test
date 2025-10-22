@@ -95,7 +95,7 @@ ORDER BY tr.book_id;
 ##QUESTION 5: Using joins to find the most tagged book and the most popular tag
 
 We will be writing 3 queries to find both the most tagged book and that books most popular tag.
-
+ 
 Part A: What is the most tagged book?
 
 
@@ -105,7 +105,7 @@ and the number of times a book tag has been used.
 
 Minimum Desired output:_  The title of the most tagged book, and the number of times the book has been tagged.
 
-Title: The Alchemist
+Answer: Title The Alchemist
  
 		SELECT TOP 1 b.title, tr.count
 		FROM BooksDB.dbo.books AS b
@@ -120,7 +120,7 @@ We want to find the most popular tag id, so think about ordering in a way that w
 
 Minimum Desired Output: The tag id for the most popular tag used for the most tagged book.
 
-Tag Id: 30574
+Answer:  Tag Id 30574
 
 	SELECT TOP 1  tr.tag_id, tr.count
 	FROM BooksDB.dbo.books AS b
@@ -134,7 +134,7 @@ You may return this answer with a simple query.
 
 Minimum Desired Output: The tag name for the most popular tag used for the most tagged book.
 
-Tag Name: to-read
+Answer: Tag Name to-read
 -- Code Here
 
 select tag_name from BooksDB.dbo.tags
@@ -157,8 +157,8 @@ Minimum Desired Output: tag name and tag id
 
 
 
-Your Tag and 	Tag Id:
-general-sports	12964
+Answer: Your Tag and 	Tag Id:
+        general-sports	12964
 
 select tag_id, tag_name
  from BooksDB.dbo.tags
@@ -172,7 +172,7 @@ the most.
 Minimum Desired Output: title and tag count
 
 Your Title and Number of times the tag was used: 
-				Title  												No_of_times
+Answer:				Title  												No_of_times
 Those Guys Have All the Fun: Inside the World of ESPN				   2
 The Book of Basketball: The NBA According to The Sports Guy			   2	
 -- Code Here:
@@ -229,6 +229,20 @@ SELECT TOP 10 tr.user_id,   COUNT(DISTINCT b.title) AS title_count
 	GROUP BY tr.USER_ID
 	ORDER BY title_count DESC;
 
+Answer"
+
+user_id 	total_count
+11932		15
+12483		15
+14771		15
+38201		15
+27933		14
+36923		14
+37359		14
+6772		13
+9961		13
+28480		13
+
 
 Part B: The longest list length is 15 titles total, and is shared by 4 different users.  
    Select one of the uses and print out their entire 'to read' list.
@@ -239,6 +253,24 @@ SELECT   tr.user_id , b.title
 		ON b.best_book_id = tr.book_id
 	where  tr.USER_ID=11932
 	ORDER BY b.title;
+
+Answer:
+user_id 	title
+11932	Harry Potter and the Half-Blood Prince (Harry Potter, #6)
+11932	Harry Potter and the Order of the Phoenix (Harry Potter, #5)
+11932	Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)
+11932	Harry Potter and the Sorcerer's Stone (Harry Potter, #1)
+11932	Harry Potter Boxed Set, Books 1-5 (Harry Potter, #1-5)
+11932	Harry Potter Collection (Harry Potter, #1-6)
+11932	Heretics of Dune (Dune Chronicles #5)
+11932	I am Charlotte Simmons
+11932	I'm a Stranger Here Myself: Notes on Returning to America after Twenty Years Away
+11932	Neither Here nor There: Travels in Europe
+11932	The Lord of the Rings (The Lord of the Rings, #1-3)
+11932	The Lord of the Rings: The Art of The Fellowship of the Ring
+11932	The Lord of the Rings: Weapons and Warfare
+11932	The Mother Tongue: English and How It Got That Way
+11932	The Ultimate Hitchhiker's Guide to the Galaxy
 
 SELECT  distinct TOP 20   tr.user_id 
 ,count(b.title) as cb

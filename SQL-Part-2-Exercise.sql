@@ -16,17 +16,25 @@ ANSWER:Last three characters suggests these are company names .
 from RideshareDB.dbo.other_FHV_services_jan_aug_2015
 ORDER BY Location_of_TRIPS,Location_of_VEHICLES
 
- 
+ Answer: above query displays position of space
  
  
  /*Q3For other_FHV_services_jan_aug_2015,  display the name of month of the pickup date and order in descending order. 
  Is the result of this query what you expected?*/
  
- SELECT  DISTINCT DATENAME(month,Pick_Up_Date)
+ SELECT  DISTINCT DATENAME(month,Pick_Up_Date) Month_name
 FROM RideshareDB.dbo.other_FHV_services_jan_aug_2015
 ORDER BY DATENAME(month,Pick_Up_Date) DESC
  
- 
+ Answer: Month_name
+         May
+         March
+         June
+         July
+         January
+         February
+         August
+         April
  
 /*Q4 Using other_FHV_services_jan_aug_2015, 
  write a query that returns the day number of the pickup date and month name and orders it in ascending order by day number.*/
@@ -35,6 +43,8 @@ ORDER BY DATENAME(month,Pick_Up_Date) DESC
 Datename(month,Pick_Up_Date) as "month_name"
 FROM RideshareDB.dbo.other_FHV_services_jan_aug_2015
 ORDER BY DATENAME(day,Pick_Up_Date) 
+
+  Answer: above query displays day and month name sort by day
  
  ## Aggregate Functions
 

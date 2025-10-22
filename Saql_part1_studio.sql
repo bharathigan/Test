@@ -43,9 +43,9 @@ WHERE tag_id= 30574
 
  SELECT count(book_id)
 from booksdb.dbo.books
-WHERE original_publication_year >=2000 
+WHERE original_publication_year BETWEEN 2000 AND 2009;
 
- Answer: 6188
+ Answer: 3121
 
 /*Question 6: How many book titles contain the word, "happy"?*/
 
@@ -58,14 +58,17 @@ WHERE original_title LIke '%happy%'
  /*Question 7: List the books from the top 3 authors from Question 1.  If there is more than one author just use the first one. 
 Sort the title alphabetically by `author` and then by `average_rating`, best rated to lowest. Does this order matter in sorting?*/
 
-select original_title,authors, average_rating
-from booksdb.dbo.books
-where authors in('Bill Watterson','Brandon Sanderson','J.K. Rowling, Mary GrandPré')
-order by authors, average_rating desc
-
  Answer: It's a Magical World: A Calvin and Hobbes Collection
 There's Treasure Everywhere: A Calvin and Hobbes Collection
 The Authoritative Calvin and Hobbes
+
+  Does this order matter in sorting? Yes it mattters
+
+  select original_title,authors, average_rating, ratings_count
+from booksdb.dbo.books
+where authors in('Bill Watterson','Brandon Sanderson','J.K. Rowling, Mary GrandPré')
+order by authors, average_rating, ratings_count asc
+
 
 /*Question 8: Write a query that returns the number of authors whose first name is between rock and roll.*/
 

@@ -4,7 +4,7 @@
 /*Question 1: Select the top 1000 rows from the books table.  Make sure you are able to see all of the columns.*/
   select   top 1000 * 
   from Booksdb.dbo.books
-  
+  Answer: 1000 rows total
   
 /*Question 2: Count the number of titles.  Are there 10,000 titles as promised by the dataset?*/
 
@@ -13,7 +13,8 @@ FROM Booksdb.dbo.books
 
 Answer 9410
 
-/*Are there 10,000 titles as promised by the dataset?--- NO*/
+/*Are there 10,000 titles as promised by the dataset?*/
+Answer:Yes
 
 /*Question 3: Count the number of books where the `original_publication_year` is earlier than 1800.*/
 
@@ -27,7 +28,8 @@ Answer 125
 
 SELECT  distinct authors 
 FROM Booksdb.dbo.books
-
+	  
+Answer: above query will display distinct authors
 
 
 /*Question 5: Create a query that displays a count of all the books that contain a language code for English.
@@ -37,7 +39,7 @@ select count(book_id)
 FROM Booksdb.dbo.books
 where language_code like 'en%'
 
-Answer
+Answer 8730 rows total
 
 
 /*Question 6: Create a query to check how many original titles were written during World War I era (1914-1921).*/
@@ -46,7 +48,7 @@ SELECT COUNT (original_title)
 FROM Booksdb.dbo.books
 WHERE original_publication_year BETWEEN 1914 AND 1921
    
-Answer 8730
+Answer 38 titles total
 
 
 /*B. The Book Tags Table*/
@@ -57,13 +59,16 @@ SELECT top 1000*
 FROM  Booksdb.dbo.book_tags	
 ORDER BY tag_id
 
-
-
+Answer: 1000 rows total
+	  
 /*Question 2: Create a query that counts the number of `goodreads_book_id` grouped by the `tag_id`.*/
 
 select tag_id, count(goodreads_book_id)
 FROM  Booksdb.dbo.book_tags	
 group by tag_id
+
+Answer: above query display tagid and goodreads_book_id count by tag_id
+	  
 
 
 
@@ -74,7 +79,7 @@ select tag_id, count(goodreads_book_id) as "Goodreads book count"
 FROM  Booksdb.dbo.book_tags	
 group by tag_id
 
-
+Answer: Goodreads book count
 
 /*C The Ratings Table*/
 
@@ -84,8 +89,8 @@ group by tag_id
 select top 1000 *
 from Booksdb.dbo.ratings
 order by rating desc
-
-
+ 
+Answer: Displays top 1000 rows by rating descending order 
 
 /*Question 2: Create a query that returns the total number of users that have given a rating of less than 2.*/
 
@@ -115,7 +120,7 @@ select *
 from Booksdb.dbo.tags
 where tag_name like '%mystery%'
 
-
+Answer: Displays all columns from tags table where tag-name contains mystery
 
 /*Question 2: Run the query below. In your own words, what is it returning?*/
 
@@ -139,7 +144,8 @@ SELECT user_id, count(book_id) "Total Books To Read"
    FROM BooksDB.dbo.to_read
 GROUP BY user_id
    order by user_id
-    
+
+Answer: displays count of books by user_id    
 
 
 /*Question 2: Create a query that uses `user_id` to count the total number of books each user wants to read. 
@@ -152,3 +158,4 @@ SELECT user_id, count(book_id) "Total Books To Read"
 GROUP BY user_id
    order by "Total Books To Read" desc 
     
+Answer: displays total no of books by user_id and reocrds sorted by Total Books To Read
