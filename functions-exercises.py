@@ -92,7 +92,7 @@ def make_diamond(height):
         diamond += line
         if i > 1:
             diamond += "\n"
-    return diamond
+    return  diamond 
 print(make_diamond(5))    
 
 
