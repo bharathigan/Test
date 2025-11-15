@@ -24,7 +24,7 @@ def reverse_characters(text):
 my_variable_name = input("Enter a word: ")
 print(reverse_characters(my_variable_name))
 
-# 2) The 'split' method does not work on numbers, but we want the function to return a number with all the digits reversed (e.g. 1234 converts to 4321 and NOT the string "4321")
+# 2) The 'split' method does not  work on numbers, but we want the function to return a number with all the digits reversed (e.g. 1234 converts to 4321 and NOT the string "4321")
 # a) Add an if statement to your reverse_characters function to check the typeof the parameter.
 def reverse_characters(text):
      if type(text) == str:
